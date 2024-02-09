@@ -1,21 +1,28 @@
-import { AuthButton, ButtonWrapper, CardButton, HeaderTitle, StyledHeader, Wrapper } from "./styles";
+import { useState } from "react";
+import { Cart } from '../Cart/Cart';
 import { FiLogIn, FiLogOut,  FiShoppingCart } from 'react-icons/fi';
+
+import * as S from "./styles";
+
 export const Header:React.FC =()=>{
+    const [showCart, setShowCart] = useState(false);
+    const isLogged = false;
     return (
-        <StyledHeader>
-            <Wrapper>
-                <HeaderTitle>MyShop.</HeaderTitle>
-                <ButtonWrapper>
-                    <AuthButton>
-                        Login
-                        <FiLogIn />
-                    </AuthButton>
-                    <CardButton>
+        <S.StyledHeader>
+            <S.Wrapper>
+                <S.HeaderTitle>MyShop.</S.HeaderTitle>
+                <S.ButtonWrapper>
+                    <S.AuthButton isLogged={isLogged}>
+                        {isLogged ? "Logout" : "Login"}
+                        {isLogged ? <FiLogOut/> : <FiLogIn /> }
+                    </S.AuthButton>
+                    <S.CardButton onClick={()=>setShowCart(!showCart)}>
                         Carrinho
                         <FiShoppingCart />
-                    </CardButton>
-                </ButtonWrapper>
-            </Wrapper>
-        </StyledHeader>
+                    </S.CardButton>
+                </S.ButtonWrapper>
+            </S.Wrapper>
+            <Cart showCart={showCart}/>                
+        </S.StyledHeader>
     );
 };

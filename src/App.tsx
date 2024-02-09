@@ -2,14 +2,13 @@ import React from 'react';
 import {GlobalStyles} from "./styles/GlobalStyles";
 
 import { Header } from './components/Header/Header';
-import { ProductCard } from './components/ProductCard/ProductCard';
-
+import { ProductsList } from './components/ProductsList/PorductsList';
 
 function App() {
   return( 
     <>
       <Header/>
-      <ProductCard></ProductCard>      
+      <ProductsList/>
       <GlobalStyles>Style Components</GlobalStyles>
     </>
   )

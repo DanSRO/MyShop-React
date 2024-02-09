@@ -1,14 +1,28 @@
 import { FiShoppingCart } from 'react-icons/fi';
-import * as S from './styles';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-export const ProductCard:React.FC = () =>{
+import * as S from './styles';
+import { Product } from '../../Data/products';
+
+export interface ProductCardProps{
+    product: Product;
+}
+
+export const ProductCard:React.FC <ProductCardProps>= ({product}) =>{
     return (
         <S.Card>
-            <S.ProductImage src='https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg' alt=''/>
-            <S.ProductTitle>Mens Casual Premium Slim Fit T-Shirts</S.ProductTitle>
+            <S.ProductImage src={product.image} alt={product.description}/>
+            <S.ProductTitle>{product.title}</S.ProductTitle>
             <S.ReviewPriceContainer>
-                <S.Review>4.1</S.Review>
-                <S.Price>$109.90</S.Price >
+                <S.Review>
+                    { Array.from({ length: 5}).map((_, index) => index < Math.round(product.rating.rate) ? ( 
+                        <AiFillStar key={index} />
+                        ) : ( 
+                        <AiOutlineStar key={index} />
+                        )
+                    )}
+                    ({product.rating.rate})</S.Review>
+                <S.Price>${product.price}</S.Price >
             </S.ReviewPriceContainer>
             <S.AddToCardButtonWrapper>
                 <S.AddToCardButton>
