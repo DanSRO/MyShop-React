@@ -1,16 +1,17 @@
-import React from 'react';
-import {GlobalStyles} from "./styles/GlobalStyles";
+import { Provider } from 'react-redux';
 
 import { Header } from './components/Header/Header';
 import { ProductsList } from './components/ProductsList/PorductsList';
+import {GlobalStyles} from "./styles/GlobalStyles";
+import { store } from './redux/store';
 
 function App() {
   return( 
-    <>
+    <Provider store={store}>
       <Header/>
       <ProductsList/>
-      <GlobalStyles>Style Components</GlobalStyles>
-    </>
+      <GlobalStyles />
+    </Provider>
   )
 }
 
