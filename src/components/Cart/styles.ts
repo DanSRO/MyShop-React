@@ -15,3 +15,15 @@ export const Container = styled.aside<ContainerProps>`
     transition: 0.5s;
 `;
 export const Title = styled.h1``;
+
+export const CartProductList = styled.ul`
+    padding: 2rem 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
+export const CartProductItem = styled.li`
+    
+`;
+export const CartTotal = styled.strong``;

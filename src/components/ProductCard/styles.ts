@@ -67,4 +67,23 @@ export const AddToCardButton = styled.button`
     svg{
         font-size: 0.7rem;
     }
-`; 
+`;
+
+export const RemoveFromCardButton = styled.button`
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    padding: 0 1rem;
+    background-color: violet;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+
+    svg{
+        font-size: 0.7rem;
+    }
+`;

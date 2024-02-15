@@ -18,7 +18,10 @@ interface UserAction{
     payload?:User;
 }
 // Todo reducer precisa retornar o nosso estado atualizado
-export function userReducer(state=initialState, action:UserAction):UserState{
+export function userReducer(
+    state=initialState, 
+    action:UserAction
+    ): UserState {
     if(action.type === "user/login"){
         return {
             ...state,
