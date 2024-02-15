@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { RootReducer, rootReducer } from '../../redux/root-reducer';
+import { Product } from '../../Data/products';
 interface CartProps{
     showCart:boolean;
 }
@@ -10,6 +11,14 @@ export const Cart:React.FC<CartProps> = ({showCart}) =>{
     const total = cart.reduce((totalCart, product)=>{
         return totalCart+product.price;
     },0);
+   
+
+    const removeFromList = (product:Product) =>{
+        dispatch({
+            type:"cart/remove-product",
+            payload:product
+        })
+    }
     return (
         <S.Container showCart={showCart}>
             <S.Title>Carrinho</S.Title>
@@ -17,7 +26,7 @@ export const Cart:React.FC<CartProps> = ({showCart}) =>{
                 {cart.map((product)=>(
                     <S.CartProductItem key={product.id}>
                         <strong>{product.title}</strong> - ${product.price}
-                        <button onClick={()=>dispatch({type:"cart/remove-product", payload:product})}>Remover</button>
+                        <button onClick={()=>removeFromList(product)}>Remover</button>
                     </S.CartProductItem>
                     ))}
             </S.CartProductList>
