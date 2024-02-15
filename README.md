@@ -1,3 +1,7 @@
+
+![image](https://github.com/DanSRO/MyShop-React/assets/77812386/b8fc76d6-38ba-4d93-a013-8885bced59fd)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
