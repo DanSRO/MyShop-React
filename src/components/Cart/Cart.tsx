@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { RootReducer, rootReducer } from '../../redux/root-reducer';
 import { Product } from '../../Data/products';
+import { useEffect } from 'react';
 interface CartProps{
     showCart:boolean;
 }
@@ -11,7 +12,27 @@ export const Cart:React.FC<CartProps> = ({showCart}) =>{
     const total = cart.reduce((totalCart, product)=>{
         return totalCart+product.price;
     },0);
-   
+    useEffect(() => {
+        const fetchProductsFromApi = async () => {
+          try {
+            const response = await fetch('https://fakestoreapi.com/products');
+            if (!response.ok) {
+              throw new Error('Failed to fetch products');
+            }
+            const data: Product[] = await response.json();
+    
+            // Despacha uma ação para adicionar os produtos da API ao carrinho (se necessário)
+            dispatch({
+              type: 'cart/add-multiple-products',
+              payload: data,
+            });
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchProductsFromApi();
+      }, [dispatch]);   
 
     const removeFromList = (product:Product) =>{
         dispatch({

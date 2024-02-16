@@ -57,7 +57,7 @@ export const ProductCard:React.FC <ProductCardProps>= ({product}) =>{
                         Adicionar ao carrinho ...
                         <FiShoppingCart/>
                     </S.AddToCardButton>
-                )};                
+                )}                
             </S.AddToCardButtonWrapper>
         </S.Card>
     );
