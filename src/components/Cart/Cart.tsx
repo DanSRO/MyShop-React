@@ -3,6 +3,7 @@ import * as S from './styles';
 import { RootReducer, rootReducer } from '../../redux/root-reducer';
 import { Product } from '../../Data/products';
 import { useEffect } from 'react';
+import { removeProduct } from '../../redux/Cart/cart-slice';
 interface CartProps{
     showCart:boolean;
 }
@@ -35,10 +36,7 @@ export const Cart:React.FC<CartProps> = ({showCart}) =>{
       }, [dispatch]);   
 
     const removeFromList = (product:Product) =>{
-        dispatch({
-            type:"cart/remove-product",
-            payload:product
-        })
+        dispatch(removeProduct(product));
     }
     return (
         <S.Container showCart={showCart}>

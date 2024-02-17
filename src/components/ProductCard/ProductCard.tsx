@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { Product } from '../../Data/products';
 import { RootReducer } from '../../redux/root-reducer';
+import { addProduct, removeProduct } from '../../redux/Cart/cart-slice';
 
 export interface ProductCardProps{
     product: Product;
@@ -18,17 +19,11 @@ export const ProductCard:React.FC <ProductCardProps>= ({product}) =>{
 
     function handleAddProductToCart(){
         //despachar a action de add o produto ao carrinho
-        dispatch({
-            type: 'cart/add-product',
-            payload:product,
-        })
+        dispatch(addProduct(product));
     }
 
     function handleRemoveProductToCart(){
-        dispatch({
-            type:'cart/remove-product',
-            payload:product
-        })
+        dispatch(removeProduct(product));
     }
     return (
         <S.Card>
